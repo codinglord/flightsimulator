@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://equityapi.morningstar.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://equityapi.morningstar.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://equityapi.morningstar.com/">
+      <s:element name="GetCompanyEventCalendar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:CompanyEventCalendarIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CompanyEventCalendarIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="SEDOL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCompanyEventCalendarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyEventCalendarResult" type="tns:CompanyEventCalendars" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompanyEventCalendars">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeneralInfo" type="tns:GeneralInfoEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyEventCalendarEntityList" type="tns:ArrayOfCompanyEventCalendarEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageDetail" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeneralInfoEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShareClassId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCompanyEventCalendarEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyEventCalendarEntity" nillable="true" type="tns:CompanyEventCalendarEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyEventCalendarEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EventName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeginDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndDateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SecurityHeader" type="tns:SecurityHeader" />
+      <s:complexType name="SecurityHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetCompanyContactInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:ContactInfoIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ContactInfoIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCompanyContactInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyContactInformationResult" type="tns:ContactInfos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ContactInfos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeneralInfo" type="tns:GeneralInfoEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactInfoEntity" type="tns:ContactInfoEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactInfoEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactPersonName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProfessionalTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Province" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompanyGeneralInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:CompanyInfoIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CompanyInfoIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCompanyGeneralInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyGeneralInformationResult" type="tns:CompanyInfos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompanyInfos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeneralInfo" type="tns:GeneralInfoEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyInfoEntity" type="tns:CompanyInfoEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyInfoEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocalName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocalNameLanguageCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DomicileCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlaceOfInCorporation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearEstablished" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiscalYearEnd" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsREIT" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsShell" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsLimitedPartnership" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="OperationStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLanguageCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalEmployee" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartTime" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullTime" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Auditor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LegalAdvisor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC1" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC2" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC3" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC4" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC5" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC6" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC7" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC8" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC9" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="USASIC10" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC1" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC2" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC3" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC4" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC5" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC6" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC7" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC8" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC9" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CANSIC10" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS1" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS2" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS3" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS4" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS5" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS6" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS7" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS8" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS9" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAICS10" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBusinessDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:BusinessDescriptionIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="BusinessDescriptionIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetBusinessDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusinessDescriptionResult" type="tns:BusinessDescriptions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BusinessDescriptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeneralInfo" type="tns:GeneralInfoEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessDescriptionEntity" type="tns:BusinessDescriptionEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessDescription" type="tns:BusinessDescriptionItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessDescriptionEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MediumDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LongDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessDescriptionItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="tns:ArrayOfItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="MediumDescription" type="tns:ArrayOfItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="LongDescription" type="tns:ArrayOfItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Item">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="LanguageCode" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:element name="CompanyEventCalendars" nillable="true" type="tns:CompanyEventCalendars" />
+      <s:element name="ContactInfos" nillable="true" type="tns:ContactInfos" />
+      <s:element name="CompanyInfos" nillable="true" type="tns:CompanyInfos" />
+      <s:element name="BusinessDescriptions" nillable="true" type="tns:BusinessDescriptions" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCompanyEventCalendarSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyEventCalendar" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyEventCalendarResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyContactInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyContactInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyGeneralInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyGeneralInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusinessDescription" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusinessDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+    <wsdl:part name="startDate" type="s:string" />
+    <wsdl:part name="endDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarHttpGetOut">
+    <wsdl:part name="Body" element="tns:CompanyEventCalendars" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationHttpGetOut">
+    <wsdl:part name="Body" element="tns:ContactInfos" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationHttpGetOut">
+    <wsdl:part name="Body" element="tns:CompanyInfos" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionHttpGetOut">
+    <wsdl:part name="Body" element="tns:BusinessDescriptions" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+    <wsdl:part name="startDate" type="s:string" />
+    <wsdl:part name="endDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarHttpPostOut">
+    <wsdl:part name="Body" element="tns:CompanyEventCalendars" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyContactInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:ContactInfos" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyGeneralInformationHttpPostOut">
+    <wsdl:part name="Body" element="tns:CompanyInfos" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessDescriptionHttpPostOut">
+    <wsdl:part name="Body" element="tns:BusinessDescriptions" />
+  </wsdl:message>
+  <wsdl:portType name="InvestorRelationsServiceSoap">
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <wsdl:input message="tns:GetCompanyEventCalendarSoapIn" />
+      <wsdl:output message="tns:GetCompanyEventCalendarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <wsdl:input message="tns:GetCompanyContactInformationSoapIn" />
+      <wsdl:output message="tns:GetCompanyContactInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <wsdl:input message="tns:GetCompanyGeneralInformationSoapIn" />
+      <wsdl:output message="tns:GetCompanyGeneralInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <wsdl:input message="tns:GetBusinessDescriptionSoapIn" />
+      <wsdl:output message="tns:GetBusinessDescriptionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InvestorRelationsServiceHttpGet">
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <wsdl:input message="tns:GetCompanyEventCalendarHttpGetIn" />
+      <wsdl:output message="tns:GetCompanyEventCalendarHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <wsdl:input message="tns:GetCompanyContactInformationHttpGetIn" />
+      <wsdl:output message="tns:GetCompanyContactInformationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <wsdl:input message="tns:GetCompanyGeneralInformationHttpGetIn" />
+      <wsdl:output message="tns:GetCompanyGeneralInformationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <wsdl:input message="tns:GetBusinessDescriptionHttpGetIn" />
+      <wsdl:output message="tns:GetBusinessDescriptionHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="InvestorRelationsServiceHttpPost">
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <wsdl:input message="tns:GetCompanyEventCalendarHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyEventCalendarHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <wsdl:input message="tns:GetCompanyContactInformationHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyContactInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <wsdl:input message="tns:GetCompanyGeneralInformationHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyGeneralInformationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <wsdl:input message="tns:GetBusinessDescriptionHttpPostIn" />
+      <wsdl:output message="tns:GetBusinessDescriptionHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InvestorRelationsServiceSoap" type="tns:InvestorRelationsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCompanyEventCalendar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCompanyEventCalendarSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCompanyContactInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCompanyContactInformationSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCompanyGeneralInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCompanyGeneralInformationSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetBusinessDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetBusinessDescriptionSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvestorRelationsServiceSoap12" type="tns:InvestorRelationsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCompanyEventCalendar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCompanyEventCalendarSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCompanyContactInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCompanyContactInformationSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCompanyGeneralInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCompanyGeneralInformationSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetBusinessDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetBusinessDescriptionSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvestorRelationsServiceHttpGet" type="tns:InvestorRelationsServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <http:operation location="/GetCompanyEventCalendar" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <http:operation location="/GetCompanyContactInformation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <http:operation location="/GetCompanyGeneralInformation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <http:operation location="/GetBusinessDescription" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InvestorRelationsServiceHttpPost" type="tns:InvestorRelationsServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetCompanyEventCalendar">
+      <http:operation location="/GetCompanyEventCalendar" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyContactInformation">
+      <http:operation location="/GetCompanyContactInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyGeneralInformation">
+      <http:operation location="/GetCompanyGeneralInformation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessDescription">
+      <http:operation location="/GetBusinessDescription" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InvestorRelationsService">
+    <wsdl:port name="InvestorRelationsServiceSoap" binding="tns:InvestorRelationsServiceSoap">
+      <soap:address location="http://equityapi.morningstar.com/Webservice/InvestorRelationsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvestorRelationsServiceSoap12" binding="tns:InvestorRelationsServiceSoap12">
+      <soap12:address location="http://equityapi.morningstar.com/Webservice/InvestorRelationsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvestorRelationsServiceHttpGet" binding="tns:InvestorRelationsServiceHttpGet">
+      <http:address location="http://equityapi.morningstar.com/Webservice/InvestorRelationsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InvestorRelationsServiceHttpPost" binding="tns:InvestorRelationsServiceHttpPost">
+      <http:address location="http://equityapi.morningstar.com/Webservice/InvestorRelationsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

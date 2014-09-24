@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FeedEngine.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FeedEngine_com_morningstar_equityapi_GlobalMasterListsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx</Value>
+    </Setting>
+    <Setting Name="FeedEngine_com_morningstar_equityapi1_InvestorRelationsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://equityapi.morningstar.com/Webservice/InvestorRelationsService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

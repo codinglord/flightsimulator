@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightSimulator", "FlightSimulator\FlightSimulator.csproj", "{0BA2A7A6-4ECB-44B5-85C6-4CC98606D1D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedEngine", "FeedEngine\FeedEngine.csproj", "{DD9F8283-9EF6-4542-B220-5A05FB5C11FC}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BA2A7A6-4ECB-44B5-85C6-4CC98606D1D1}.Debug|x86.ActiveCfg = Debug|x86
+		{0BA2A7A6-4ECB-44B5-85C6-4CC98606D1D1}.Debug|x86.Build.0 = Debug|x86
+		{0BA2A7A6-4ECB-44B5-85C6-4CC98606D1D1}.Release|x86.ActiveCfg = Release|x86
+		{0BA2A7A6-4ECB-44B5-85C6-4CC98606D1D1}.Release|x86.Build.0 = Release|x86
+		{DD9F8283-9EF6-4542-B220-5A05FB5C11FC}.Debug|x86.ActiveCfg = Debug|x86
+		{DD9F8283-9EF6-4542-B220-5A05FB5C11FC}.Debug|x86.Build.0 = Debug|x86
+		{DD9F8283-9EF6-4542-B220-5A05FB5C11FC}.Release|x86.ActiveCfg = Release|x86
+		{DD9F8283-9EF6-4542-B220-5A05FB5C11FC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

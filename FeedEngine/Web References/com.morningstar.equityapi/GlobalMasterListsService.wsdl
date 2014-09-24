@@ -1,0 +1,2202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://equityapi.morningstar.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://equityapi.morningstar.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://equityapi.morningstar.com/">
+      <s:element name="GetCountryList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCountryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountryListResult" type="tns:Countries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Countries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryEntityList" type="tns:ArrayOfCountryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageDetail" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCountryEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CountryEntity" nillable="true" type="tns:CountryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CountryEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CountryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SecurityHeader" type="tns:SecurityHeader" />
+      <s:complexType name="SecurityHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetStockExchangeSecurityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:StockExchangeSecurityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="stockStatus" type="tns:StockStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="StockExchangeSecurityIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="ExchangeId" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="StockStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Active" />
+          <s:enumeration value="Delisted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetStockExchangeSecurityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockExchangeSecurityListResult" type="tns:StockExchangeSecurities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StockExchangeSecurities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="StockExchangeSecurityEntityList" type="tns:ArrayOfStockExchangeSecurityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStockExchangeSecurityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StockExchangeSecurityEntity" nillable="true" type="tns:StockExchangeSecurityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StockExchangeSecurityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShareClassId" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvestmentTypeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StockStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompanyFinancialAvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:CompanyFinancialAvailabilityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CompanyFinancialAvailabilityIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="ExchangeId" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCompanyFinancialAvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyFinancialAvailabilityListResult" type="tns:CompanyFinancialAvailabilitys" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompanyFinancialAvailabilitys">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyFinancialAvailabilityEntityList" type="tns:ArrayOfCompanyFinancialAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCompanyFinancialAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyFinancialAvailabilityEntity" nillable="true" type="tns:CompanyFinancialAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyFinancialAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Start" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="End" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestQuarterlyReportDate" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestAnnualReportDate" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestPreliminaryReportDate" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestSemiAnnualReportDate" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemplateCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompanyEventCalendarAvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:CompanyEventAvailabilityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CompanyEventAvailabilityIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="ExchangeId" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCompanyEventCalendarAvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyEventCalendarAvailabilityListResult" type="tns:CompanyEventAvailabilities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompanyEventAvailabilities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyEventAvailabilityEntityList" type="tns:ArrayOfCompanyEventAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCompanyEventAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyEventAvailabilityEntity" nillable="true" type="tns:CompanyEventAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyEventAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Start" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="End" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCallTranscriptAvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:CallTranscriptAvailabilityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CallTranscriptAvailabilityIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="ExchangeId" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCallTranscriptAvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCallTranscriptAvailabilityListResult" type="tns:CallTranscriptAvailabilities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CallTranscriptAvailabilities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="CallTranscriptAvailabilityEntityList" type="tns:ArrayOfCallTranscriptAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCallTranscriptAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CallTranscriptAvailabilityEntity" nillable="true" type="tns:CallTranscriptAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CallTranscriptAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Start" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="End" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPreciousMetalPriceAvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="metalName" type="tns:MetalName" />
+            <s:element minOccurs="0" maxOccurs="1" name="currencyId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="MetalName">
+        <s:restriction base="s:string">
+          <s:enumeration value="Gold" />
+          <s:enumeration value="Silver" />
+          <s:enumeration value="Platinum" />
+          <s:enumeration value="Palladium" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPreciousMetalPriceAvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPreciousMetalPriceAvailabilityListResult" type="tns:PreciousMetalsAvailabilitys" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PreciousMetalsAvailabilitys">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreciousMetalsAvailabilityEntityList" type="tns:ArrayOfPreciousMetalsAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPreciousMetalsAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PreciousMetalsAvailabilityEntity" nillable="true" type="tns:PreciousMetalsAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PreciousMetalsAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MetalName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Start" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="End" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMorningstarSectorList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMorningstarSectorListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMorningstarSectorListResult" type="tns:Sectors" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Sectors">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorEntityList" type="tns:ArrayOfSectorEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSectorEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SectorEntity" nillable="true" type="tns:SectorEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SectorEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMorningstarIndustryGroupList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMorningstarIndustryGroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMorningstarIndustryGroupListResult" type="tns:IndustryGroups" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IndustryGroups">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupEntityList" type="tns:ArrayOfIndustryGroupEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIndustryGroupEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndustryGroupEntity" nillable="true" type="tns:IndustryGroupEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndustryGroupEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMorningstarIndustryList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMorningstarIndustryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMorningstarIndustryListResult" type="tns:Industries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Industries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryEntityList" type="tns:ArrayOfIndustryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIndustryEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndustryEntity" nillable="true" type="tns:IndustryEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IndustryEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SectorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SectorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IndustryName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExchangeList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:ExchangeIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ExchangeIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ALL" />
+          <s:enumeration value="RegionId" />
+          <s:enumeration value="CountryId" />
+          <s:enumeration value="ExchangeId" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetExchangeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExchangeListResult" type="tns:Exchanges" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Exchanges">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeEntityList" type="tns:ArrayOfExchangeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExchangeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExchangeEntity" nillable="true" type="tns:ExchangeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExchangeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MIC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExchangeRegionList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetExchangeRegionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExchangeRegionListResult" type="tns:Regions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Regions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionEntityList" type="tns:ArrayOfRegionEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRegionEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RegionEntity" nillable="true" type="tns:RegionEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RegionEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RegionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrencyList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrencyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrencyListResult" type="tns:Currencies" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Currencies">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyEntityList" type="tns:ArrayOfCurrencyEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCurrencyEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CurrencyEntity" nillable="true" type="tns:CurrencyEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CurrencyEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrencyName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInvestmentTypeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetInvestmentTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvestmentTypeListResult" type="tns:InvestmentTypes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InvestmentTypes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvestmentTypeEntityList" type="tns:ArrayOfInvestmentTypeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInvestmentTypeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InvestmentTypeEntity" nillable="true" type="tns:InvestmentTypeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InvestmentTypeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="InvestmentTypeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvestmentTypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEquityStockReportAvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:EquityStockReportAvailabilityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="EquityStockReportAvailabilityIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="ExchangeId" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetEquityStockReportAvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEquityStockReportAvailabilityListResult" type="tns:EquityStockReportAvailabilities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EquityStockReportAvailabilities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="EquityStockReportAvailabilityList" type="tns:ArrayOfEquityStockReportAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEquityStockReportAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EquityStockReportAvailabilityEntity" nillable="true" type="tns:EquityStockReportAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EquityStockReportAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Start" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="End" nillable="true" type="s:date" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetExecutiveOfficerDirectorAvailabilityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:ExecutiveOfficerDirectorAvailabilityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ExecutiveOfficerDirectorAvailabilityIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="ExchangeId" />
+          <s:enumeration value="SEDOL" />
+          <s:enumeration value="CIK" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetExecutiveOfficerDirectorAvailabilityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExecutiveOfficerDirectorAvailabilityListResult" type="tns:ExecutiveOfficerDirectorAvailabilitys" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ExecutiveOfficerDirectorAvailabilitys">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExecutiveOfficerDirectorAvailabilityEntityList" type="tns:ArrayOfExecutiveOfficerDirectorAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExecutiveOfficerDirectorAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExecutiveOfficerDirectorAvailabilityEntity" nillable="true" type="tns:ExecutiveOfficerDirectorAvailabilityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExecutiveOfficerDirectorAvailabilityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Start" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="End" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEquityStockReportIndexList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:EquityStockReportIndexIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="EquityStockReportIndexIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="SEDOL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetEquityStockReportIndexListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEquityStockReportIndexListResult" type="tns:EquityStockReportIndexs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EquityStockReportIndexs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeneralInfo" type="tns:GeneralInfoEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="EquityStockReportIndexList" type="tns:ArrayOfEquityStockReportIndexEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeneralInfoEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShareClassId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEquityStockReportIndexEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EquityStockReportIndexEntity" nillable="true" type="tns:EquityStockReportIndexEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EquityStockReportIndexEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReportDate" nillable="true" type="s:date" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCallTranscriptIndexList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:CallTranscriptIndexIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CallTranscriptIndexIdentifierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Symbol" />
+          <s:enumeration value="CUSIP" />
+          <s:enumeration value="ISIN" />
+          <s:enumeration value="SEDOL" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCallTranscriptIndexListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCallTranscriptIndexListResult" type="tns:CallTranscriptIndexs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CallTranscriptIndexs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeneralInfo" type="tns:GeneralInfoEntity" />
+          <s:element minOccurs="0" maxOccurs="1" name="CallTranscriptIndexList" type="tns:ArrayOfCallTranscriptIndexEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCallTranscriptIndexEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CallTranscriptIndexEntity" nillable="true" type="tns:CallTranscriptIndexEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CallTranscriptIndexEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CallTranscriptDate" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="Year" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Quarter" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFullStockExchangeSecurityList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="identifierType" type="tns:StockExchangeSecurityIdentifierType" />
+            <s:element minOccurs="0" maxOccurs="1" name="identifier" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="stockStatus" type="tns:StockStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFullStockExchangeSecurityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFullStockExchangeSecurityListResult" type="tns:FullStockExchangeSecurities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FullStockExchangeSecurities">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullStockExchangeSecurityEntityList" type="tns:ArrayOfFullStockExchangeSecurityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFullStockExchangeSecurityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FullStockExchangeSecurityEntity" nillable="true" type="tns:FullStockExchangeSecurityEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FullStockExchangeSecurityEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PerformanceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvestmentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CIK" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEDOL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvestmentTypeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StockStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLanguageCodeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLanguageCodeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLanguageCodeListResult" type="tns:LanguageCodes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LanguageCodes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MessageInfo" type="tns:Message" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageCodeEntityList" type="tns:ArrayOfLanguageCodeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLanguageCodeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LanguageCodeEntity" nillable="true" type="tns:LanguageCodeEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LanguageCodeEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NativeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Countries" nillable="true" type="tns:Countries" />
+      <s:element name="StockExchangeSecurities" nillable="true" type="tns:StockExchangeSecurities" />
+      <s:element name="CompanyFinancialAvailabilitys" nillable="true" type="tns:CompanyFinancialAvailabilitys" />
+      <s:element name="CompanyEventAvailabilities" nillable="true" type="tns:CompanyEventAvailabilities" />
+      <s:element name="CallTranscriptAvailabilities" nillable="true" type="tns:CallTranscriptAvailabilities" />
+      <s:element name="PreciousMetalsAvailabilitys" nillable="true" type="tns:PreciousMetalsAvailabilitys" />
+      <s:element name="Sectors" nillable="true" type="tns:Sectors" />
+      <s:element name="IndustryGroups" nillable="true" type="tns:IndustryGroups" />
+      <s:element name="Industries" nillable="true" type="tns:Industries" />
+      <s:element name="Exchanges" nillable="true" type="tns:Exchanges" />
+      <s:element name="Regions" nillable="true" type="tns:Regions" />
+      <s:element name="Currencies" nillable="true" type="tns:Currencies" />
+      <s:element name="InvestmentTypes" nillable="true" type="tns:InvestmentTypes" />
+      <s:element name="EquityStockReportAvailabilities" nillable="true" type="tns:EquityStockReportAvailabilities" />
+      <s:element name="ExecutiveOfficerDirectorAvailabilitys" nillable="true" type="tns:ExecutiveOfficerDirectorAvailabilitys" />
+      <s:element name="EquityStockReportIndexs" nillable="true" type="tns:EquityStockReportIndexs" />
+      <s:element name="CallTranscriptIndexs" nillable="true" type="tns:CallTranscriptIndexs" />
+      <s:element name="FullStockExchangeSecurities" nillable="true" type="tns:FullStockExchangeSecurities" />
+      <s:element name="LanguageCodes" nillable="true" type="tns:LanguageCodes" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCountryListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCountryList" />
+  </wsdl:message>
+  <wsdl:message name="GetCountryListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCountryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCountryListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStockExchangeSecurityList" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStockExchangeSecurityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyFinancialAvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyFinancialAvailabilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyEventCalendarAvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyEventCalendarAvailabilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCallTranscriptAvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCallTranscriptAvailabilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreciousMetalPriceAvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreciousMetalPriceAvailabilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarSectorListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMorningstarSectorList" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarSectorListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMorningstarSectorListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarSectorListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryGroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMorningstarIndustryGroupList" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryGroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMorningstarIndustryGroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryGroupListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMorningstarIndustryList" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMorningstarIndustryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExchangeList" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExchangeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRegionListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExchangeRegionList" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRegionListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExchangeRegionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRegionListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrencyList" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrencyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetInvestmentTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvestmentTypeList" />
+  </wsdl:message>
+  <wsdl:message name="GetInvestmentTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvestmentTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvestmentTypeListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEquityStockReportAvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEquityStockReportAvailabilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExecutiveOfficerDirectorAvailabilityList" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExecutiveOfficerDirectorAvailabilityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEquityStockReportIndexList" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEquityStockReportIndexListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCallTranscriptIndexList" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCallTranscriptIndexListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFullStockExchangeSecurityList" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFullStockExchangeSecurityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguageCodeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLanguageCodeList" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguageCodeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLanguageCodeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguageCodeListSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCountryListHttpGetIn" />
+  <wsdl:message name="GetCountryListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Countries" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+    <wsdl:part name="stockStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:StockExchangeSecurities" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CompanyFinancialAvailabilitys" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CompanyEventAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CallTranscriptAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListHttpGetIn">
+    <wsdl:part name="metalName" type="s:string" />
+    <wsdl:part name="currencyId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:PreciousMetalsAvailabilitys" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarSectorListHttpGetIn" />
+  <wsdl:message name="GetMorningstarSectorListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sectors" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryGroupListHttpGetIn" />
+  <wsdl:message name="GetMorningstarIndustryGroupListHttpGetOut">
+    <wsdl:part name="Body" element="tns:IndustryGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryListHttpGetIn" />
+  <wsdl:message name="GetMorningstarIndustryListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Industries" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListHttpGetIn">
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Exchanges" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRegionListHttpGetIn" />
+  <wsdl:message name="GetExchangeRegionListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Regions" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListHttpGetIn" />
+  <wsdl:message name="GetCurrencyListHttpGetOut">
+    <wsdl:part name="Body" element="tns:Currencies" />
+  </wsdl:message>
+  <wsdl:message name="GetInvestmentTypeListHttpGetIn" />
+  <wsdl:message name="GetInvestmentTypeListHttpGetOut">
+    <wsdl:part name="Body" element="tns:InvestmentTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:EquityStockReportAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:ExecutiveOfficerDirectorAvailabilitys" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListHttpGetOut">
+    <wsdl:part name="Body" element="tns:EquityStockReportIndexs" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListHttpGetOut">
+    <wsdl:part name="Body" element="tns:CallTranscriptIndexs" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListHttpGetIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+    <wsdl:part name="stockStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListHttpGetOut">
+    <wsdl:part name="Body" element="tns:FullStockExchangeSecurities" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguageCodeListHttpGetIn" />
+  <wsdl:message name="GetLanguageCodeListHttpGetOut">
+    <wsdl:part name="Body" element="tns:LanguageCodes" />
+  </wsdl:message>
+  <wsdl:message name="GetCountryListHttpPostIn" />
+  <wsdl:message name="GetCountryListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Countries" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+    <wsdl:part name="stockStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetStockExchangeSecurityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:StockExchangeSecurities" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyFinancialAvailabilityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CompanyFinancialAvailabilitys" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyEventCalendarAvailabilityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CompanyEventAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptAvailabilityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CallTranscriptAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListHttpPostIn">
+    <wsdl:part name="metalName" type="s:string" />
+    <wsdl:part name="currencyId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPreciousMetalPriceAvailabilityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:PreciousMetalsAvailabilitys" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarSectorListHttpPostIn" />
+  <wsdl:message name="GetMorningstarSectorListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sectors" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryGroupListHttpPostIn" />
+  <wsdl:message name="GetMorningstarIndustryGroupListHttpPostOut">
+    <wsdl:part name="Body" element="tns:IndustryGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetMorningstarIndustryListHttpPostIn" />
+  <wsdl:message name="GetMorningstarIndustryListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Industries" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListHttpPostIn">
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Exchanges" />
+  </wsdl:message>
+  <wsdl:message name="GetExchangeRegionListHttpPostIn" />
+  <wsdl:message name="GetExchangeRegionListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Regions" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrencyListHttpPostIn" />
+  <wsdl:message name="GetCurrencyListHttpPostOut">
+    <wsdl:part name="Body" element="tns:Currencies" />
+  </wsdl:message>
+  <wsdl:message name="GetInvestmentTypeListHttpPostIn" />
+  <wsdl:message name="GetInvestmentTypeListHttpPostOut">
+    <wsdl:part name="Body" element="tns:InvestmentTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportAvailabilityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:EquityStockReportAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetExecutiveOfficerDirectorAvailabilityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ExecutiveOfficerDirectorAvailabilitys" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEquityStockReportIndexListHttpPostOut">
+    <wsdl:part name="Body" element="tns:EquityStockReportIndexs" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTranscriptIndexListHttpPostOut">
+    <wsdl:part name="Body" element="tns:CallTranscriptIndexs" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListHttpPostIn">
+    <wsdl:part name="exchangeId" type="s:string" />
+    <wsdl:part name="identifierType" type="s:string" />
+    <wsdl:part name="identifier" type="s:string" />
+    <wsdl:part name="stockStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFullStockExchangeSecurityListHttpPostOut">
+    <wsdl:part name="Body" element="tns:FullStockExchangeSecurities" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguageCodeListHttpPostIn" />
+  <wsdl:message name="GetLanguageCodeListHttpPostOut">
+    <wsdl:part name="Body" element="tns:LanguageCodes" />
+  </wsdl:message>
+  <wsdl:portType name="GlobalMasterListsServiceSoap">
+    <wsdl:operation name="GetCountryList">
+      <wsdl:input message="tns:GetCountryListSoapIn" />
+      <wsdl:output message="tns:GetCountryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <wsdl:input message="tns:GetStockExchangeSecurityListSoapIn" />
+      <wsdl:output message="tns:GetStockExchangeSecurityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <wsdl:input message="tns:GetCompanyFinancialAvailabilityListSoapIn" />
+      <wsdl:output message="tns:GetCompanyFinancialAvailabilityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <wsdl:input message="tns:GetCompanyEventCalendarAvailabilityListSoapIn" />
+      <wsdl:output message="tns:GetCompanyEventCalendarAvailabilityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <wsdl:input message="tns:GetCallTranscriptAvailabilityListSoapIn" />
+      <wsdl:output message="tns:GetCallTranscriptAvailabilityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <wsdl:input message="tns:GetPreciousMetalPriceAvailabilityListSoapIn" />
+      <wsdl:output message="tns:GetPreciousMetalPriceAvailabilityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <wsdl:input message="tns:GetMorningstarSectorListSoapIn" />
+      <wsdl:output message="tns:GetMorningstarSectorListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <wsdl:input message="tns:GetMorningstarIndustryGroupListSoapIn" />
+      <wsdl:output message="tns:GetMorningstarIndustryGroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <wsdl:input message="tns:GetMorningstarIndustryListSoapIn" />
+      <wsdl:output message="tns:GetMorningstarIndustryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <wsdl:input message="tns:GetExchangeListSoapIn" />
+      <wsdl:output message="tns:GetExchangeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <wsdl:input message="tns:GetExchangeRegionListSoapIn" />
+      <wsdl:output message="tns:GetExchangeRegionListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListSoapIn" />
+      <wsdl:output message="tns:GetCurrencyListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <wsdl:input message="tns:GetInvestmentTypeListSoapIn" />
+      <wsdl:output message="tns:GetInvestmentTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <wsdl:input message="tns:GetEquityStockReportAvailabilityListSoapIn" />
+      <wsdl:output message="tns:GetEquityStockReportAvailabilityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <wsdl:input message="tns:GetExecutiveOfficerDirectorAvailabilityListSoapIn" />
+      <wsdl:output message="tns:GetExecutiveOfficerDirectorAvailabilityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <wsdl:input message="tns:GetEquityStockReportIndexListSoapIn" />
+      <wsdl:output message="tns:GetEquityStockReportIndexListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <wsdl:input message="tns:GetCallTranscriptIndexListSoapIn" />
+      <wsdl:output message="tns:GetCallTranscriptIndexListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <wsdl:input message="tns:GetFullStockExchangeSecurityListSoapIn" />
+      <wsdl:output message="tns:GetFullStockExchangeSecurityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <wsdl:input message="tns:GetLanguageCodeListSoapIn" />
+      <wsdl:output message="tns:GetLanguageCodeListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GlobalMasterListsServiceHttpGet">
+    <wsdl:operation name="GetCountryList">
+      <wsdl:input message="tns:GetCountryListHttpGetIn" />
+      <wsdl:output message="tns:GetCountryListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <wsdl:input message="tns:GetStockExchangeSecurityListHttpGetIn" />
+      <wsdl:output message="tns:GetStockExchangeSecurityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <wsdl:input message="tns:GetCompanyFinancialAvailabilityListHttpGetIn" />
+      <wsdl:output message="tns:GetCompanyFinancialAvailabilityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <wsdl:input message="tns:GetCompanyEventCalendarAvailabilityListHttpGetIn" />
+      <wsdl:output message="tns:GetCompanyEventCalendarAvailabilityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <wsdl:input message="tns:GetCallTranscriptAvailabilityListHttpGetIn" />
+      <wsdl:output message="tns:GetCallTranscriptAvailabilityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <wsdl:input message="tns:GetPreciousMetalPriceAvailabilityListHttpGetIn" />
+      <wsdl:output message="tns:GetPreciousMetalPriceAvailabilityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <wsdl:input message="tns:GetMorningstarSectorListHttpGetIn" />
+      <wsdl:output message="tns:GetMorningstarSectorListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <wsdl:input message="tns:GetMorningstarIndustryGroupListHttpGetIn" />
+      <wsdl:output message="tns:GetMorningstarIndustryGroupListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <wsdl:input message="tns:GetMorningstarIndustryListHttpGetIn" />
+      <wsdl:output message="tns:GetMorningstarIndustryListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <wsdl:input message="tns:GetExchangeListHttpGetIn" />
+      <wsdl:output message="tns:GetExchangeListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <wsdl:input message="tns:GetExchangeRegionListHttpGetIn" />
+      <wsdl:output message="tns:GetExchangeRegionListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListHttpGetIn" />
+      <wsdl:output message="tns:GetCurrencyListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <wsdl:input message="tns:GetInvestmentTypeListHttpGetIn" />
+      <wsdl:output message="tns:GetInvestmentTypeListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <wsdl:input message="tns:GetEquityStockReportAvailabilityListHttpGetIn" />
+      <wsdl:output message="tns:GetEquityStockReportAvailabilityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <wsdl:input message="tns:GetExecutiveOfficerDirectorAvailabilityListHttpGetIn" />
+      <wsdl:output message="tns:GetExecutiveOfficerDirectorAvailabilityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <wsdl:input message="tns:GetEquityStockReportIndexListHttpGetIn" />
+      <wsdl:output message="tns:GetEquityStockReportIndexListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <wsdl:input message="tns:GetCallTranscriptIndexListHttpGetIn" />
+      <wsdl:output message="tns:GetCallTranscriptIndexListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <wsdl:input message="tns:GetFullStockExchangeSecurityListHttpGetIn" />
+      <wsdl:output message="tns:GetFullStockExchangeSecurityListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <wsdl:input message="tns:GetLanguageCodeListHttpGetIn" />
+      <wsdl:output message="tns:GetLanguageCodeListHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="GlobalMasterListsServiceHttpPost">
+    <wsdl:operation name="GetCountryList">
+      <wsdl:input message="tns:GetCountryListHttpPostIn" />
+      <wsdl:output message="tns:GetCountryListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <wsdl:input message="tns:GetStockExchangeSecurityListHttpPostIn" />
+      <wsdl:output message="tns:GetStockExchangeSecurityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <wsdl:input message="tns:GetCompanyFinancialAvailabilityListHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyFinancialAvailabilityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <wsdl:input message="tns:GetCompanyEventCalendarAvailabilityListHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyEventCalendarAvailabilityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <wsdl:input message="tns:GetCallTranscriptAvailabilityListHttpPostIn" />
+      <wsdl:output message="tns:GetCallTranscriptAvailabilityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <wsdl:input message="tns:GetPreciousMetalPriceAvailabilityListHttpPostIn" />
+      <wsdl:output message="tns:GetPreciousMetalPriceAvailabilityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <wsdl:input message="tns:GetMorningstarSectorListHttpPostIn" />
+      <wsdl:output message="tns:GetMorningstarSectorListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <wsdl:input message="tns:GetMorningstarIndustryGroupListHttpPostIn" />
+      <wsdl:output message="tns:GetMorningstarIndustryGroupListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <wsdl:input message="tns:GetMorningstarIndustryListHttpPostIn" />
+      <wsdl:output message="tns:GetMorningstarIndustryListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <wsdl:input message="tns:GetExchangeListHttpPostIn" />
+      <wsdl:output message="tns:GetExchangeListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <wsdl:input message="tns:GetExchangeRegionListHttpPostIn" />
+      <wsdl:output message="tns:GetExchangeRegionListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input message="tns:GetCurrencyListHttpPostIn" />
+      <wsdl:output message="tns:GetCurrencyListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <wsdl:input message="tns:GetInvestmentTypeListHttpPostIn" />
+      <wsdl:output message="tns:GetInvestmentTypeListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <wsdl:input message="tns:GetEquityStockReportAvailabilityListHttpPostIn" />
+      <wsdl:output message="tns:GetEquityStockReportAvailabilityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <wsdl:input message="tns:GetExecutiveOfficerDirectorAvailabilityListHttpPostIn" />
+      <wsdl:output message="tns:GetExecutiveOfficerDirectorAvailabilityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <wsdl:input message="tns:GetEquityStockReportIndexListHttpPostIn" />
+      <wsdl:output message="tns:GetEquityStockReportIndexListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <wsdl:input message="tns:GetCallTranscriptIndexListHttpPostIn" />
+      <wsdl:output message="tns:GetCallTranscriptIndexListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <wsdl:input message="tns:GetFullStockExchangeSecurityListHttpPostIn" />
+      <wsdl:output message="tns:GetFullStockExchangeSecurityListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <wsdl:input message="tns:GetLanguageCodeListHttpPostIn" />
+      <wsdl:output message="tns:GetLanguageCodeListHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GlobalMasterListsServiceSoap" type="tns:GlobalMasterListsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCountryList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCountryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCountryListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetStockExchangeSecurityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetStockExchangeSecurityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCompanyFinancialAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCompanyFinancialAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCompanyEventCalendarAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCompanyEventCalendarAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCallTranscriptAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCallTranscriptAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetPreciousMetalPriceAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPreciousMetalPriceAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetMorningstarSectorList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMorningstarSectorListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetMorningstarIndustryGroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMorningstarIndustryGroupListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetMorningstarIndustryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMorningstarIndustryListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetExchangeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetExchangeListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetExchangeRegionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetExchangeRegionListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCurrencyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCurrencyListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetInvestmentTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInvestmentTypeListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetEquityStockReportAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEquityStockReportAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetExecutiveOfficerDirectorAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetExecutiveOfficerDirectorAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetEquityStockReportIndexList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetEquityStockReportIndexListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetCallTranscriptIndexList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCallTranscriptIndexListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetFullStockExchangeSecurityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetFullStockExchangeSecurityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <soap:operation soapAction="http://equityapi.morningstar.com/GetLanguageCodeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLanguageCodeListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GlobalMasterListsServiceSoap12" type="tns:GlobalMasterListsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCountryList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCountryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCountryListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetStockExchangeSecurityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetStockExchangeSecurityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCompanyFinancialAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCompanyFinancialAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCompanyEventCalendarAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCompanyEventCalendarAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCallTranscriptAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCallTranscriptAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetPreciousMetalPriceAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPreciousMetalPriceAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetMorningstarSectorList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMorningstarSectorListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetMorningstarIndustryGroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMorningstarIndustryGroupListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetMorningstarIndustryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMorningstarIndustryListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetExchangeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetExchangeListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetExchangeRegionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetExchangeRegionListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCurrencyList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCurrencyListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetInvestmentTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInvestmentTypeListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetEquityStockReportAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEquityStockReportAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetExecutiveOfficerDirectorAvailabilityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetExecutiveOfficerDirectorAvailabilityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetEquityStockReportIndexList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetEquityStockReportIndexListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetCallTranscriptIndexList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCallTranscriptIndexListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetFullStockExchangeSecurityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetFullStockExchangeSecurityListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <soap12:operation soapAction="http://equityapi.morningstar.com/GetLanguageCodeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLanguageCodeListSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GlobalMasterListsServiceHttpGet" type="tns:GlobalMasterListsServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetCountryList">
+      <http:operation location="/GetCountryList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <http:operation location="/GetStockExchangeSecurityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <http:operation location="/GetCompanyFinancialAvailabilityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <http:operation location="/GetCompanyEventCalendarAvailabilityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <http:operation location="/GetCallTranscriptAvailabilityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <http:operation location="/GetPreciousMetalPriceAvailabilityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <http:operation location="/GetMorningstarSectorList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <http:operation location="/GetMorningstarIndustryGroupList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <http:operation location="/GetMorningstarIndustryList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <http:operation location="/GetExchangeList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <http:operation location="/GetExchangeRegionList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <http:operation location="/GetCurrencyList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <http:operation location="/GetInvestmentTypeList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <http:operation location="/GetEquityStockReportAvailabilityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <http:operation location="/GetExecutiveOfficerDirectorAvailabilityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <http:operation location="/GetEquityStockReportIndexList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <http:operation location="/GetCallTranscriptIndexList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <http:operation location="/GetFullStockExchangeSecurityList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <http:operation location="/GetLanguageCodeList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GlobalMasterListsServiceHttpPost" type="tns:GlobalMasterListsServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetCountryList">
+      <http:operation location="/GetCountryList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStockExchangeSecurityList">
+      <http:operation location="/GetStockExchangeSecurityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyFinancialAvailabilityList">
+      <http:operation location="/GetCompanyFinancialAvailabilityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyEventCalendarAvailabilityList">
+      <http:operation location="/GetCompanyEventCalendarAvailabilityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptAvailabilityList">
+      <http:operation location="/GetCallTranscriptAvailabilityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreciousMetalPriceAvailabilityList">
+      <http:operation location="/GetPreciousMetalPriceAvailabilityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarSectorList">
+      <http:operation location="/GetMorningstarSectorList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryGroupList">
+      <http:operation location="/GetMorningstarIndustryGroupList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMorningstarIndustryList">
+      <http:operation location="/GetMorningstarIndustryList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeList">
+      <http:operation location="/GetExchangeList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExchangeRegionList">
+      <http:operation location="/GetExchangeRegionList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <http:operation location="/GetCurrencyList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvestmentTypeList">
+      <http:operation location="/GetInvestmentTypeList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportAvailabilityList">
+      <http:operation location="/GetEquityStockReportAvailabilityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExecutiveOfficerDirectorAvailabilityList">
+      <http:operation location="/GetExecutiveOfficerDirectorAvailabilityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEquityStockReportIndexList">
+      <http:operation location="/GetEquityStockReportIndexList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTranscriptIndexList">
+      <http:operation location="/GetCallTranscriptIndexList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullStockExchangeSecurityList">
+      <http:operation location="/GetFullStockExchangeSecurityList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageCodeList">
+      <http:operation location="/GetLanguageCodeList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GlobalMasterListsService">
+    <wsdl:port name="GlobalMasterListsServiceSoap" binding="tns:GlobalMasterListsServiceSoap">
+      <soap:address location="http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GlobalMasterListsServiceSoap12" binding="tns:GlobalMasterListsServiceSoap12">
+      <soap12:address location="http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GlobalMasterListsServiceHttpGet" binding="tns:GlobalMasterListsServiceHttpGet">
+      <http:address location="http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GlobalMasterListsServiceHttpPost" binding="tns:GlobalMasterListsServiceHttpPost">
+      <http:address location="http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
